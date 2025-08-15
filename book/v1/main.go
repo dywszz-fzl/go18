@@ -21,7 +21,7 @@ type BookSet struct {
 type Book struct {
 	Id uint `json:"id" gorm:"primaryKey;column:id"`
 
-	// ??这是什么语法
+	// 组合
 	BookSpec
 }
 
@@ -39,7 +39,7 @@ func (b *Book) TableName() string {
 }
 
 func setUpDatabase() *gorm.DB {
-	dsn := "root:root@tcp(127.0.0.1:3306)/go18?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:dywszz@tcp(127.0.0.1:3306)/go18?charset=utf8mb4&parseTime=True&loc=Local"
 	//??? 应该是Gin固定用法
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
