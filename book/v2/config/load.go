@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/caarlos0/env/v6"
 	"gopkg.in/yaml.v3"
 	"os"
 )
@@ -22,4 +23,9 @@ func LoadConfigfromYaml(configPath string) error {
 	}
 	config = C()
 	return yaml.Unmarshal(content, config)
+}
+
+func LoadConfigFromEnv() error {
+	config = C()
+	return env.Parse(config)
 }
