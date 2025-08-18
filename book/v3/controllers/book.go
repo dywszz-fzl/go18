@@ -4,18 +4,18 @@ import (
 	"awesomeProject/book/v3/config"
 	"awesomeProject/book/v3/exception"
 	"awesomeProject/book/v3/models"
+	"awesomeProject/skills/ioc"
 	"context"
-	"github.com/infraboard/mcube/v2/ioc"
 
 	"gorm.io/gorm"
 )
 
 func GetBookService() *BookController {
-	return ioc.Controller().Get("*controllers.BookController").(*BookController)
+	return ioc.Controller.Get("book_controller").(*BookController)
 }
 
 func init() {
-	ioc.Controller().Registry(&BookController{})
+	ioc.Controller.Registry("book_controller", &BookController{})
 }
 
 type BookController struct {
